@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -32,16 +33,13 @@ public class ToDoList extends Activity {
         myListView.setAdapter(arrayAdapter);
 
 
-        myEditText.setOnKeyListener( new View.OnKeyListener() {
+        final Button addButton = (Button)findViewById(R.id.btnAddItem);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_DOWN)
-                    if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
-                        todoItems.add(0, myEditText.getText().toString());
-                        arrayAdapter.notifyDataSetChanged();
-                        myEditText.setText("");
-                    }
-                return false;
+            public void onClick(View v) {
+                todoItems.add(0, myEditText.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+                myEditText.setText("");
             }
         });
     }
