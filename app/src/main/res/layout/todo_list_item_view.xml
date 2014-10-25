@@ -1,0 +1,11 @@
+ <com.munkiphd.todolist.TodoListItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.munkiphd.todolist"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ccc"
+    android:padding="10dp"
+     android:scrollbars="vertical"
+     android:textColor="@color/notepad_text"
+     android:fadingEdge="vertical"
+/>

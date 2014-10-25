@@ -27,8 +27,9 @@ public class ToDoList extends Activity {
 
         // array with values to add to the listview
         final ArrayList<String> todoItems = new ArrayList<String>();
+        int resourceID = R.layout.todo_list_item_view;
         final ArrayAdapter<String> arrayAdapter;
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, todoItems);
+        arrayAdapter = new ArrayAdapter<String>(this, resourceID, todoItems);
 
         myListView.setAdapter(arrayAdapter);
 
