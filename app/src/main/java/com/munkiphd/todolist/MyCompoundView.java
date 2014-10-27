@@ -35,11 +35,6 @@ public class MyCompoundView extends LinearLayout {
 
     private void init(AttributeSet attrs, int defStyle) {
         // Load attributes
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.MyCompoundView, defStyle, 0);
-
-
-        a.recycle();
 
         // Set up a default TextPaint object
         mTextPaint = new TextPaint();
