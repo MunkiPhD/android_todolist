@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,6 +54,28 @@ public class ToDoList extends Activity {
                 cancelAdd();
             }
         });
+
+
+        SwipeDismissListViewTouchListener touchListener =
+                new SwipeDismissListViewTouchListener(
+                        myListView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return true;
+                            }
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                String itemRemoved = "";
+                                for (int position : reverseSortedPositions) {
+                                    itemRemoved = arrayAdapter.getItem(position);
+                                    arrayAdapter.remove(itemRemoved);
+                                }
+                                arrayAdapter.notifyDataSetChanged();
+                                Toast.makeText(listView.getContext(), "Removed Item " + itemRemoved,  Toast.LENGTH_SHORT).show();
+                            }
+                        });
+        myListView.setOnTouchListener(touchListener);
 
         registerForContextMenu(myListView);
     }
